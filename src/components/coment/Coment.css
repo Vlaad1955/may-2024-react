@@ -1,0 +1,41 @@
+body {
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.coment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coment-card {
+    background-color: #444;
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+}
+
+.coment-card h2 {
+    color: #ffdd57;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.coment-card p {
+    color: #aaa;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.coment-card strong {
+    color: #ffdd57;
+}
