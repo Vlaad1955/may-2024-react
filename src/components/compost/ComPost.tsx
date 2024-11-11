@@ -11,16 +11,18 @@ type ComPostProps = {
 const ComPost: React.FC<ComPostProps> = ({post}) =>{
 
     const dispatch = useAppDispatch();
-    const commentsForfiltr = useAppSelector((state) => state.commentSlice.commentsForfiltr);
+    const commentsForPost = useAppSelector(
+        (state) => state.commentSlice.commentsForfiltr[post.id] || []
+    );
 
     useEffect(() => {
         dispatch(commentSliceAction.filterCommentsByPostId(post.id));
-    }, [dispatch]);
+    }, [dispatch, post.id]);
 
     return(
         <div>
             <h1>{post.id} {post.title}</h1>
-            {commentsForfiltr.map((comment)=><div>{comment.id} {comment.body}</div>)}
+            {commentsForPost.map((comment)=><div>{comment.id} {comment.body}</div>)}
         </div>
     )
 };

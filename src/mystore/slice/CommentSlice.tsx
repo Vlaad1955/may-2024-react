@@ -4,12 +4,12 @@ import { getComments } from "../../service/comments.service";
 
 type CommentSliceType = {
     comments: CommentModel[];
-    commentsForfiltr: CommentModel[];
+    commentsForfiltr:{ [postId: number] :CommentModel[]};
 };
 
 let CommentInitState: CommentSliceType = {
     comments: [],
-    commentsForfiltr: [],
+    commentsForfiltr: {},
 };
 
 const loadComments = createAsyncThunk(
@@ -29,8 +29,9 @@ export let comentSlice = createSlice({
     initialState: CommentInitState,
     reducers: {
         filterCommentsByPostId: (state, action: PayloadAction<number>) => {
-            state.commentsForfiltr = state.comments.filter(
-                (comment) => comment.postId === action.payload
+            const postId = action.payload;
+            state.commentsForfiltr[postId] = state.comments.filter(
+                (comment) => comment.postId === postId
             );
         },
     },
